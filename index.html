@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <h1>Etch-a-Sketch</h1>
+    <div class="container">
+        <div class="control-container">
+            <div class="control-panel">
+                <div class="color-picker">
+                    <div class="fg-color-picker">
+                        <button class="button fg-button">foreground:&nbsp;<span id="bg-value"></span></button>
+                        <input type="color" value="#ff0000" class="color foreground"/>
+                    </div>
+                    <div class="bg-color-picker">
+                        <button class="button bg-button">background:&nbsp;<span id="bg-value"></span></button>
+                        <input type="color" value="#ff0000" class="color background"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-container">
+
+        </div>
+    </div>
+</body>
+</html>
