@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,26 +12,72 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
 </head>
+
 <body>
     <h1>Etch-a-Sketch</h1>
     <div class="container">
         <div class="control-container">
             <div class="control-panel">
                 <div class="color-picker">
-                    <div class="fg-color-picker">
-                        <button class="button fg-button">foreground:&nbsp;<span id="bg-value"></span></button>
-                        <input type="color" value="#ff0000" class="color foreground"/>
+                    <div class="fg swatch-container">
+                        <input type="color" class="fg-color color-input" value="#000000">
+                        <div class="fg color-overlay">
+                            <p class="fg content">Foreground:&nbsp<span class="fg color-value">#000000</span></p>
+                        </div>
                     </div>
-                    <div class="bg-color-picker">
-                        <button class="button bg-button">background:&nbsp;<span id="bg-value"></span></button>
-                        <input type="color" value="#ff0000" class="color background"/>
+                    <div class="bg swatch-container">
+                        <input type="color" class="bg-color color-input" value="#ffffff">
+                        <div class=" bg color-overlay">
+                            <p class="bg content">Background:&nbsp<span class="bg color-value">#ffffff</span></p>
+                        </div>
                     </div>
+                </div>
+                <hr>
+                <div class="button-container">
+                    <button class="eraser toggle-button">
+                        <img class="button-icon" src="./button-icons/eraser.png">
+                        <span class="button-content">Erase</span>
+                    </button>
+                    <button class="pencil toggle-button">
+                        <img class="button-icon" src="./button-icons/pencil.png">
+                        <span class="button-content">Pencil</span>
+                    </button>
+                    <button class="rainbow toggle-button">
+                        <img class="button-icon" src="./button-icons/rainbow.png">
+                        <span class="button-content">Rainbow</span>
+                    </button>
+                    <button class="darken toggle-button">
+                        <img class="button-icon" src="./button-icons/darken.png">
+                        <span class="button-content">Darken</span>
+                    </button>
+                    <button class="lighten toggle-button">
+                        <img class="button-icon" src="./button-icons/lighten.png">
+                        <span class="button-content">Lighten</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="grid-control">
+                    <div class="slide-container">
+                        <input type="range" min="16" max="64" value="24" class="slider" id="myRange">
+                        <p class="slide content">Grid size:&nbsp;<span class="slider-value"></span></p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" class="toggle-input">
+                        <span class="toggle-slider">
+                            <span class="toggle-background"></span>
+                            <span class="toggle-handle"></span>
+                        </span>
+                        <span class="toggle-content">
+                            <span class="toggle-label on">Grid lines</span>
+                            <span class="toggle-label off">Plain</span>
+                        </span>
+                    </label>
+                    <button class="clear">CLEAR !</button>
                 </div>
             </div>
         </div>
-        <div class="grid-container">
-
-        </div>
+        <div class="grid-container"></div>
     </div>
 </body>
+
 </html>
