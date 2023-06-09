@@ -10,7 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
+    <script src="./app1.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -34,23 +37,23 @@
                 </div>
                 <hr>
                 <div class="button-container">
-                    <button class="eraser toggle-button">
+                    <button class="eraser toggle-button" button-type="eraser">
                         <img class="button-icon" src="./button-icons/eraser.png">
                         <span class="button-content">Erase</span>
                     </button>
-                    <button class="pencil toggle-button">
+                    <button class="pencil toggle-button" button-type="pencil">
                         <img class="button-icon" src="./button-icons/pencil.png">
                         <span class="button-content">Pencil</span>
                     </button>
-                    <button class="rainbow toggle-button">
+                    <button class="toggle-button" button-type="rainbow">
                         <img class="button-icon" src="./button-icons/rainbow.png">
                         <span class="button-content">Rainbow</span>
                     </button>
-                    <button class="darken toggle-button">
+                    <button class="toggle-button" button-type="darken">
                         <img class="button-icon" src="./button-icons/darken.png">
                         <span class="button-content">Darken</span>
                     </button>
-                    <button class="lighten toggle-button">
+                    <button class="toggle-button" button-type="lighten">
                         <img class="button-icon" src="./button-icons/lighten.png">
                         <span class="button-content">Lighten</span>
                     </button>
@@ -58,7 +61,7 @@
                 <hr>
                 <div class="grid-control">
                     <div class="slide-container">
-                        <input type="range" min="16" max="64" value="24" class="slider" id="myRange">
+                        <input type="range" min="16" max="54" value="24" class="slider" id="myRange">
                         <p class="slide content">Grid size:&nbsp;<span class="slider-value"></span></p>
                     </div>
                     <label class="toggle-switch">
