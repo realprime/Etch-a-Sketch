@@ -288,7 +288,13 @@ hr {
     transition: background-color .5s;
 }
 
+.item{
+    background-color: var(--item-background);
+}
+
 .grid-container {
+    --item-background: #ffffff;
+
     display: flex;
     flex-direction: column;
     background-color: rgb(156, 156, 156);

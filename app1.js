@@ -11,38 +11,18 @@ const toggleInput = document.querySelector('.toggle-input');
 //grid
 const gridContainer = document.querySelector('.grid-container');
 const containerStyle = getComputedStyle(gridContainer);
+const gridItems = document.querySelectorAll('.item');
 
 
 sliderValue.innerHTML = `24 x 24`;
 var itemForeground = '#000000';
 var itemBackground = '#ffffff';
-var size = 24;
+grid();
 
-
-grid()
 
 
 function grid() {
-    gridContainer.innerHTML = '';
-
-    if(colorValue.length > 0){
-        inputs.forEach((input, index) => {
-            input.addEventListener("change", () => {
-                const color = input.value;
-                if (index === 0) {
-                    itemForeground = color;
-                    colorValue[index].innerText = itemForeground;
-                } else if (index === 1) {
-                    itemBackground = color;
-                    colorValue[index].innerText = itemBackground;
-                }
-                colorOverlay[index].style.backgroundColor = color;
-                setTextColor(colorContent[index], colorValue[index], color);
-
-                grid();
-            });
-        });
-    }
+    var size = 24;
 
     slider.addEventListener('input', () => {
         size = parseInt(slider.value);
@@ -51,19 +31,31 @@ function grid() {
         const percentage = value * 100;
         slider.style.background = `linear-gradient(to right, #6db3f6 0%, #6db3f6 ${percentage}%, #d3d3d3 ${percentage}%, #d3d3d3 100%)`;
 
-        grid();
+        // Regenerate the grid with the updated size
+        generateGrid(size);
+        toggleInput.checked = false;
     });
 
+    // Generate the initial grid
+    generateGrid(size);
+}
+
+function generateGrid(size) {
+    gridContainer.innerHTML = '';
+
+    inputColors();
+
     for (let i = 0; i < size; i++) {
-        const row = document.createElement("div");
-        row.classList.add("row");
+        const row = document.createElement('div');
+        row.classList.add('row');
         gridContainer.appendChild(row);
         for (let j = 0; j < size; j++) {
-            const item = document.createElement("div");
+            const item = document.createElement('div');
             item.classList.add('item');
             item.style.height = `${parseInt(containerStyle.height) / size}px`;
             item.style.width = `${parseInt(containerStyle.height) / size}px`;
-            item.style.backgroundColor = itemBackground;
+            inputColors();
+            // item.style.backgroundColor = itemBackground;
             item.style.borderBottom = '1px solid rgb(156, 156, 156)';
             item.style.borderRight = '1px solid rgb(156, 156, 156)';
             item.style.boxSizing = 'border-box';
@@ -75,20 +67,21 @@ function grid() {
             item.addEventListener('mousedown', () => {
                 isMouseDown = true;
                 item.style.backgroundColor = itemForeground;
-            })
-            item.addEventListener('mousedown', () => {
+            });
+            item.addEventListener('mouseup', () => {
                 isMouseDown = false;
-            })
+            });
             item.addEventListener('mouseenter', () => {
                 if (isMouseDown) {
                     item.style.backgroundColor = itemForeground;
                 }
-
-            })
-
+            });
         }
     }
 }
+
+
+
 
 function toggle(item){
     toggleInput.addEventListener('change', () => {
@@ -101,6 +94,37 @@ function toggle(item){
         } 
     })
 }
+
+
+
+
+
+function inputColors(){
+    if(colorValue.length > 0){
+        inputs.forEach((input, index) => {
+            input.addEventListener("change", () => {
+                const color = input.value;
+                if (index === 0) {
+                    itemForeground = color;
+                    console.log(itemForeground);
+                    colorValue[index].innerText = itemForeground;
+                } else if (index === 1) {
+                    itemBackground = color;
+                    // console.log(itemBackground);
+                    colorValue[index].innerText = color;
+                    updateBgColor(color);
+                }
+                colorOverlay[index].style.backgroundColor = color;
+                setTextColor(colorContent[index], colorValue[index], color);
+            });
+        });
+    }
+}
+
+function updateBgColor(color){
+    gridContainer.style.setProperty("--item-background", color);
+}
+
 
 function setTextColor(content, colorInput, backgroundColor) {
     const colorBrightness = calculateColorBrightness(backgroundColor);

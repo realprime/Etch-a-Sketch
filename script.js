@@ -58,21 +58,25 @@ buttonSelections.forEach(buttonSelection => {
     })
 })
 
-inputs.forEach((input, index) => {
-    input.addEventListener("change", () => {
-        const color = input.value;
-        if (index === 0) {
-            foreground = color;
-            colorValue[index].innerText = foreground;
-        } else if (index === 1) {
-            background = color;
-            colorValue[index].innerText = background;
-            item.style.backgroundColor = background;
-        }
-        colorOverlay[index].style.backgroundColor = color;
-        setTextColor(colorContent[index], colorValue[index], color);
+if(colorValue.length > 0){
+    inputs.forEach((input, index) => {
+        input.addEventListener("change", () => {
+            const color = input.value;
+            if (index === 0) {
+                itemForeground = color;
+                colorValue[index].innerText = itemForeground;
+            } else if (index === 1) {
+                itemBackground = color;
+                colorValue[index].innerText = itemBackground;
+            }
+            colorOverlay[index].style.backgroundColor = color;
+            setTextColor(colorContent[index], colorValue[index], color);
+
+            grid();
+        });
     });
-});
+}
+
 
 function setTextColor(content, colorInput, backgroundColor) {
     const colorBrightness = calculateColorBrightness(backgroundColor);
