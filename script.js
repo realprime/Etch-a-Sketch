@@ -77,12 +77,12 @@ function generateGrid(size) {
             toggle(item);
 
             pencilBtn.classList.add('focused');
-            pencil = false;
+            pencil = true;
 
-            item.addEventListener('mousedown', () => {
-                // item.setAttribute('data-shade','10');
-                item.style.backgroundColor = itemForeground;
-            });
+            // item.addEventListener('mousedown', () => {
+            //     // item.setAttribute('data-shade','10');
+            //     item.style.backgroundColor = itemForeground;
+            // });
             
 
             item.addEventListener('mousedown',draw);
@@ -188,11 +188,16 @@ lightenBtn.addEventListener('click', () => {
 
 
 function draw(e){
+    inputColors();
+
     if(eraser){
         e.target.style.backgroundColor = '';
-    } else if(rainbow){
-        e.target.style.backgroundColor = `rgb(${randomNum()},${randomNum()},${randomNum()})`
+    } else if (pencil) {
         e.target.setAttribute('data-shade','10');
+        e.target.style.backgroundColor = itemForeground;
+    } else if(rainbow){
+        e.target.setAttribute('data-shade','10');
+        e.target.style.backgroundColor = `rgb(${randomNum()},${randomNum()},${randomNum()})`
     } else if(darken) {
         if(!e.target.dataset.shade){
             e.target.setAttribute('data-shade','1');
@@ -202,7 +207,6 @@ function draw(e){
             e.target.setAttribute('data-shade',`${shadeStrength}`);
         }
         let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
-        console.log(shadeStrength);
         e.target.style.backgroundColor = increShading(itemForeground,shadeStrength);
     } else if(lighten) {
         if(e.target.dataset.shade){
@@ -211,11 +215,9 @@ function draw(e){
             e.target.setAttribute('data-shade',`${shadeStrength}`);
         }
         let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
-        console.log(shadeStrength);
         e.target.style.backgroundColor = decreShading(itemForeground,shadeStrength);
     }
 }
-
 
 function decreShading(color, amount) {
     const [red, green, blue] = getRGBValues(color);
