@@ -11,7 +11,7 @@ const toggleInput = document.querySelector('.toggle-input');
 //grid
 const gridContainer = document.querySelector('.grid-container');
 const containerStyle = getComputedStyle(gridContainer);
-const items = document.querySelectorAll('.item');
+const items = document.querySelectorAll('.gridItem');
 //toggle buttons
 const buttons = document.querySelectorAll('.toggle-button')
 //each toggle button
@@ -64,7 +64,7 @@ function generateGrid(size) {
         gridContainer.appendChild(row);
         for (let j = 0; j < size; j++) {
             const item = document.createElement('div');
-            item.classList.add('item');
+            item.classList.add('gridItem');
             item.style.height = `${parseInt(containerStyle.height) / size}px`;
             item.style.width = `${parseInt(containerStyle.height) / size}px`;
             inputColors();
@@ -80,7 +80,7 @@ function generateGrid(size) {
             pencil = false;
 
             item.addEventListener('mousedown', () => {
-                item.setAttribute('data-shade','10');
+                // item.setAttribute('data-shade','10');
                 item.style.backgroundColor = itemForeground;
             });
             
@@ -202,6 +202,7 @@ function draw(e){
             e.target.setAttribute('data-shade',`${shadeStrength}`);
         }
         let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
+        console.log(shadeStrength);
         e.target.style.backgroundColor = increShading(itemForeground,shadeStrength);
     } else if(lighten) {
         if(e.target.dataset.shade){
@@ -210,6 +211,7 @@ function draw(e){
             e.target.setAttribute('data-shade',`${shadeStrength}`);
         }
         let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
+        console.log(shadeStrength);
         e.target.style.backgroundColor = decreShading(itemForeground,shadeStrength);
     }
 }
@@ -222,7 +224,9 @@ function decreShading(color, amount) {
     if (factoredAmount < 0) {
         factoredAmount = 0;
     }
-    return `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
+    result = `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
+    console.log(result)
+    return result;
 }
     
 
@@ -232,7 +236,9 @@ function increShading(color, amount) {
     if (factoredAmount > 1) {
         factoredAmount = 1;
     }
-    return `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
+    result = `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
+    console.log(result)
+    return result;
 }
 
 
@@ -257,7 +263,7 @@ function inputColors(){
                 const color = input.value;
                 if (index === 0) {
                     itemForeground = color;
-                    console.log(itemForeground);
+                    //console.log(itemForeground);
                     colorValue[index].innerText = itemForeground;
                 } else if (index === 1) {
                     itemBackground = color;
