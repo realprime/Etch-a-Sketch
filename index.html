@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <script src="./app1.js" defer></script>
+    <script src="./script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
                 <div class="color-picker">
                     <div class="fg swatch-container">
                         <input type="color" class="fg-color color-input" value="#000000">
-                        <div class="fg color-overlay">
+                        <div class="fg color-overlay" id="fg-overlay">
                             <p class="fg content">Foreground:&nbsp<span class="fg color-value">#000000</span></p>
                         </div>
                     </div>
@@ -37,23 +37,26 @@
                 </div>
                 <hr>
                 <div class="button-container">
-                    <button class="eraser toggle-button" button-type="eraser">
+                    <button class="toggle-button" id="eraser">
                         <img class="button-icon" src="./button-icons/eraser.png">
                         <span class="button-content">Erase</span>
                     </button>
-                    <button class="pencil toggle-button" button-type="pencil">
+                    <button class="toggle-button" id="pencil">
                         <img class="button-icon" src="./button-icons/pencil.png">
                         <span class="button-content">Pencil</span>
                     </button>
-                    <button class="toggle-button" button-type="rainbow">
+                    <button class="toggle-button" id="rainbow">
                         <img class="button-icon" src="./button-icons/rainbow.png">
                         <span class="button-content">Rainbow</span>
                     </button>
-                    <button class="toggle-button" button-type="darken">
+                </div>
+                <hr>
+                <div class="button-container">
+                    <button class="toggle-button" id="darken">
                         <img class="button-icon" src="./button-icons/darken.png">
                         <span class="button-content">Darken</span>
                     </button>
-                    <button class="toggle-button" button-type="lighten">
+                    <button class="toggle-button" id="lighten">
                         <img class="button-icon" src="./button-icons/lighten.png">
                         <span class="button-content">Lighten</span>
                     </button>

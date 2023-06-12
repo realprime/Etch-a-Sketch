@@ -27,15 +27,15 @@ h1 {
     flex-direction: column;
     align-items: center;
     background: #121212;
-    padding: 18px 36px;
+    padding: 18px 32px;
     border-radius: 18px;
-    gap: 36px;
+    gap: 32px;
 }
 
 .color-picker {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     align-items: center;
 }
 
@@ -106,7 +106,7 @@ hr {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 18px;
+    gap: 16px;
 }
 
 .toggle-button {
@@ -118,6 +118,7 @@ hr {
     font-weight: bold;
     border: 2px solid rgb(109, 179, 246, .7);
     border-radius: 8px;
+    outline: none;
     transition: background-color 0.2s;
 
     display: flex;
@@ -126,25 +127,11 @@ hr {
     gap: 8px;
 }
 
-.toggle-button:hover {
-    color: rgb(109, 179, 246, 1);
-    background-color: rgb(109, 179, 246, .1);
-    border: 2px solid rgb(109, 179, 246, 1);
-    transition: background-color 0.2s;
-}
-
-.toggle-button::-moz-focus-inner
-{
-  appearance: none;
-}
-
-.toggle-button:focus {
+.focused{
     background-color: rgb(109, 179, 246, 1);
     color: white;
     border: none;
-    outline: none;
 }
-
 
 
 .button-icon {
@@ -160,7 +147,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 18px;
+    gap: 16px;
 }
 
 .slide-container {
@@ -292,26 +279,31 @@ hr {
     background-color: var(--item-background);
 }
 
+/*minimum screen size*/
+/* .grid-container {
+    --item-background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    border: 8px solid rgb(156,156,156);
+    height: 540px;
+    width: 540px;
+    margin: 5px;
+} */
+
+/* for full screen media query */
 .grid-container {
     --item-background: #ffffff;
 
     display: flex;
     flex-direction: column;
-    background-color: rgb(156, 156, 156);
-    height: 540px;
-    width: 540px;
-    padding: 8px;
-}
-
-/* for full screen media query */
-/* .grid-container {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(156, 156, 156);
+    background-color: rgb(255, 255, 255);
+    border: 8px solid rgb(156,156,156);
     height: 720px;
     width: 720px;
-    padding: 8px;
-} */
+    margin: 5px;
+}
 
 .row {
     display: flex;
