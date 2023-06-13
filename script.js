@@ -87,6 +87,8 @@ function generateGrid(size) {
 
             item.addEventListener('mousedown',draw);
 
+            item.addEventListener('mouseenter',drawHover);
+
             clear(item)
         }
     }
@@ -194,10 +196,13 @@ function draw(e){
         e.target.style.backgroundColor = '';
     } else if (pencil) {
         e.target.setAttribute('data-shade','10');
+        e.target.setAttribute('data-ink','pencil')
         e.target.style.backgroundColor = itemForeground;
     } else if(rainbow){
         e.target.setAttribute('data-shade','10');
+        e.target.setAttribute('data-ink','rainbow')
         e.target.style.backgroundColor = `rgb(${randomNum()},${randomNum()},${randomNum()})`
+        //console.log(e.target.style.backgroundColor);
     } else if(darken) {
         if(!e.target.dataset.shade){
             e.target.setAttribute('data-shade','1');
@@ -206,41 +211,65 @@ function draw(e){
             shadeStrength++; 
             e.target.setAttribute('data-shade',`${shadeStrength}`);
         }
-        let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
-        e.target.style.backgroundColor = increShading(itemForeground,shadeStrength);
+        let inkType = e.target.getAttribute('data-ink');
+        if(inkType == "rainbow" || inkType == "pencil"){
+            let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
+            let bgColor = e.target.style.backgroundColor;
+            e.target.style.backgroundColor = decreShading(rgbToHex(bgColor),shadeStrength);
+        }else{
+            let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
+            e.target.style.backgroundColor = decreShading(itemForeground,shadeStrength);
+        }
     } else if(lighten) {
         if(e.target.dataset.shade){
             let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
             shadeStrength--; 
             e.target.setAttribute('data-shade',`${shadeStrength}`);
         }
-        let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
-        e.target.style.backgroundColor = decreShading(itemForeground,shadeStrength);
+        let inkType = e.target.getAttribute('data-ink');
+        if(inkType == "rainbow" || inkType == "pencil"){
+            let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
+            let bgColor = e.target.style.backgroundColor;
+            e.target.style.backgroundColor = decreShading(rgbToHex(bgColor),shadeStrength);
+        }else{
+            let shadeStrength = parseInt(e.target.getAttribute('data-shade'));
+            e.target.style.backgroundColor = decreShading(itemForeground,shadeStrength);
+        }
     }
+}
+
+function drawHover(e){
+    if(e.buttons > 0){
+        draw(e);
+    }
+}
+
+function rgbToHex(rgb) {
+    let rgbValues = rgb.match(/\d+/g);
+    let hexValues = rgbValues.map(function (value) {
+        let hex = Number(value).toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    });
+    return "#" + hexValues.join("");
 }
 
 function decreShading(color, amount) {
     const [red, green, blue] = getRGBValues(color);
-    console.log(color);
     let factoredAmount = amount/10;
     if (factoredAmount < 0) {
         factoredAmount = 0;
     }
-    result = `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
-    console.log(result)
-    return result;
+    return `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
 }
     
 
 function increShading(color, amount) {
     let factoredAmount = amount/10;
-    const [red, green, blue] = getRGBValues(color);
     if (factoredAmount > 1) {
         factoredAmount = 1;
     }
-    result = `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
-    console.log(result)
-    return result;
+    const [red, green, blue] = getRGBValues(color);
+    return `rgba(${red}, ${green}, ${blue}, ${factoredAmount})`
 }
 
 

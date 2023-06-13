@@ -29,13 +29,13 @@ h1 {
     background: #121212;
     padding: 18px 32px;
     border-radius: 18px;
-    gap: 32px;
+    gap: 36px;
 }
 
 .color-picker {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
     align-items: center;
 }
 
@@ -106,7 +106,7 @@ hr {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 18px;
 }
 
 .toggle-button {
@@ -124,7 +124,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .focused{
@@ -147,7 +147,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
+    gap: 18px;
 }
 
 .slide-container {
@@ -275,9 +275,7 @@ hr {
     transition: background-color .5s;
 }
 
-.item{
-    background-color: var(--item-background);
-}
+
 
 /*minimum screen size*/
 /* .grid-container {
@@ -303,6 +301,10 @@ hr {
     height: 720px;
     width: 720px;
     margin: 5px;
+}
+
+.gridItem{
+    background-color: var(--item-background);
 }
 
 .row {
