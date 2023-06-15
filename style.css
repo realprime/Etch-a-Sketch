@@ -5,12 +5,15 @@ body {
     align-items: center;
     background-color: #080808;
     font-family: 'Rubik', sans-serif;
+    padding: 32px;
+    gap: 32px;
 }
 
 h1 {
     color: #6db3f6;
     font-family: 'Silkscreen', cursive;
     font-size: 36px;
+    margin: 0;
 }
 
 .container {
